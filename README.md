@@ -49,6 +49,43 @@ Desde el área de recursos humanos nos piden desarrollar una aplicación web (in
 
 ![SUPERADMIN  Asignar equipos --Prototype](https://user-images.githubusercontent.com/116883533/232738469-b90185a3-25b2-497c-b3e0-1099ec051a0c.png)
 
+### PROYECTO FINAL:
+<img width="1064" alt="Screenshot 2023-04-26 221826" src="https://user-images.githubusercontent.com/117730103/234709014-823b7a42-df08-40c9-b15d-e42863fe91e2.png">
+<img width="1067" alt="Screenshot 2023-04-26 223645" src="https://user-images.githubusercontent.com/117730103/234709574-26f6d946-dbb3-45b1-a58a-d7c27f9d449a.png">
+
+![Image20230426224032](https://user-images.githubusercontent.com/117730103/234709601-134af834-1788-4094-ba3d-cfec77712f22.png)
+
+<img width="1063" alt="Screenshot 2023-04-26 221856" src="https://user-images.githubusercontent.com/117730103/234709097-8ad82f70-b7b4-401c-a043-cd7570f08f77.png">
+
+![71AFB0D1-3448-4A6B-9DE0-CD270DF086E8](https://user-images.githubusercontent.com/117730103/234712567-b2ac80c3-822f-4f82-8eaa-9ab523983209.png)
+
+![Image20230427002341](https://user-images.githubusercontent.com/117730103/234715917-f9b7caf7-8e33-4924-981f-27e3168fa3de.png)
+
+
+
+
+
+
+
+
+
+
+
+
+<img width="1064" alt="Screenshot 2023-04-26 232751" src="https://user-images.githubusercontent.com/117730103/234709314-a113290f-823e-441a-8b1b-8bcd6a1ca436.png">
+
+<img width="1068" alt="Screenshot 2023-04-26 232804" src="https://user-images.githubusercontent.com/117730103/234710297-bc0b14cf-1ff5-438b-a937-db006af7f851.png">
+
+
+
+
+<img width="1062" alt="Screenshot 2023-04-26 223338" src="https://user-images.githubusercontent.com/117730103/234710141-6e283475-b35b-4a15-8cc9-b49afd2f97a5.png">
+
+
+
+
+
+
 ### :heavy_check_mark: Herramientas y Lenguajes
 
 - Figma
@@ -89,7 +126,11 @@ npm install
 ```sh
 npm run dev
 ```
+### Axios
 
+```sh
+npm install axios
+```
 ### Compile and Minify for Production
 
 ```sh

@@ -2,6 +2,7 @@ package com.vacaciones.services.responsableActionService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,13 @@ public class ListAllRequestOfResponsableService {
         }
         
         return allRequests;
+    }
+    public Set<User> listAllEmployesOfResponsable(String document){
+        User responsableDB = userRepository.findByDocument(document).orElseThrow();
+
+        Set<User> employes = responsableDB.getEmployes();
+
+        return employes;
     }
 
     private List<Request> addNewRequests(List<Request> actuaRequests, List<Request> newRequests){

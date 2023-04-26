@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from '../stores/authStore'
@@ -10,6 +10,7 @@ const router = useRouter();
 const logout = async ()=>{
   router.push({name:'LoginView'})
   authStore.cleanLoginSession();
+  window.sessionStorage.clear()
   await authStore.logout();
 }
 
@@ -24,7 +25,7 @@ const date = computed(() => {
 });
 
 
-const hourElement = ref('')
+/* const hourElement = ref('')
 function updateTime() {
   const currentDate = new Date();
   let hour = currentDate.getHours();
@@ -39,7 +40,7 @@ function updateTime() {
   hourElement.value = `${hour}:${minutes}:${seconds}`;
 }
 
-setInterval(updateTime, 1000);
+setInterval(updateTime, 1000); */
 
 
 </script>

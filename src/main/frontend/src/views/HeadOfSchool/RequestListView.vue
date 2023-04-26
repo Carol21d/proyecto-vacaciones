@@ -4,32 +4,31 @@ import RequestListComponent from '../../components/RequestListComponent.vue';
 import { useRouter } from 'vue-router';
 import { useResposableStore } from '../../stores/responsableStore';
 import { onBeforeMount,onUpdated } from 'vue';
-
+import { useAuthStore } from '../../stores/authStore';
 import { reactive,ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 
-const respoStore = useResposableStore();
+const responsableStore = useResposableStore();
+const authStore = useAuthStore()
 const router = useRouter();
 const route = useRoute()
 
-onBeforeMount(() =>{
-    respoStore.allRequest();
+onBeforeMount(async () =>{
+   await responsableStore.listAllRequests(authStore.username);
+   await responsableStore.listAllEmployes(authStore.username)
 })
 
 const navigateTo = (info) =>{
-    router.push({name:'requestDetailsView', params:{ document: info.userDocument,idRequest: info.requestId }})
+    router.push({name:'requestDetailsofResponsableView', params:{ document: info.userDocument, idRequest: info.requestId }})
+    /* console.log(info); */
 }
 
-onUpdated(async () =>{
-    await respoStore.allRequest()
-})
+/* onUpdated(async () =>{
+    await responsableStore.listAllRequests(authStore.username)
+}) */
 
 
-const back = () =>{
-
-    router.push({name: 'requestListView'})
-}
 
 
 
@@ -38,12 +37,11 @@ const back = () =>{
 <template>
     <div class="sectionContainer">
         <nav>
-            <button class="button-arrow"><img :src="iconArrowLeft" alt="Flecha botón para retoceder" class="arrow" @click="back()"></button>
             <h2>Historial de solicitudes</h2>
         </nav>
         <div class="componentList">
             <ul>
-                <li v-for="request of respoStore.allRequest" :key="index">
+                <li v-for="request of responsableStore.allRequests" :key="index">
                     <RequestListComponent   @emit-request-details="navigateTo" :request="request" />
                 </li>
             </ul>
@@ -64,15 +62,6 @@ const back = () =>{
     }
 }
 
-nav {
-    width: 75%;
-    display: flex;
-    justify-content: space-between;    
-    text-align: center; 
-    h2{
-        align-self: center;
-    }
-}
 li {
     list-style: none;
 

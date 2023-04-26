@@ -219,7 +219,7 @@ export const useAdminStore = defineStore('adminStore',{
         },
         async findTemporalUser(idProfile){
 
-            await this.listAllRawUsers()
+
 
             const repository = new Repository('admin')
 

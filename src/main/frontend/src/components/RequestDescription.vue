@@ -112,6 +112,7 @@ const invertedDate = computed(() => {
         background-color: white;
         border-radius: 10px;
         padding: 1vw;
+        text-align: center;
     }
 
     #comentario {

@@ -47,6 +47,7 @@ const rejectRequest = async () =>{
 </template>
 
 <style scoped lang="scss">
+@use '../../assets/scss/main' as *;
     .container{
         display: flex;
         justify-content: center;

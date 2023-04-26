@@ -28,13 +28,18 @@ onUpdated(async () => {
 </template>
 <style lang="scss" scoped> 
 @use '../../assets/scss/main' as *;
+
+h1{
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
 .list-request-wrapper{
     width: 100%;
     @include flexDisplay(column, center, center);
     .card-historial-space{
         width: 80%;
         @include flexDisplay(column, normal, center);
-        gap: 2vh
+        gap: 3vh
     }
 }
 </style>

@@ -35,7 +35,8 @@ const typeStatePicker = computed(() => {
     width: 15vw;
     p {
         color: black;
-        font-size: 3vh;
+        font-size: 2.2vh;
+        text-transform: uppercase;
         font-family: 'Poppins', sans-serif;
         font-weight: bold; 
         text-align: center;

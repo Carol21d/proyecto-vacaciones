@@ -44,8 +44,8 @@ const router = createRouter({
               meta: { requiresAuth: true }
             },
             {
-              path: 'requestDetails',
-              name: 'requestDetailsView',
+              path: 'requestDetails/employe/:document/request/:idRequest',
+              name: 'requestDetailsofResponsableView',
               component: () => import('../views/HeadOfSchool/RequestDetailsView.vue'),
               meta: { requiresAuth: true }
             },
@@ -55,12 +55,7 @@ const router = createRouter({
               component: () => import('../views/EmployeView.vue'),
               meta: { requiresAuth: true }
             },
-            {
-              path: 'inactiveUsers',
-              name: 'firedUsersView',
-              component: () => import('../views/Admin/InactiveUsers.vue'),
-              meta: { requiresAuth: true }
-              }
+
           ]
         },
         {
@@ -98,23 +93,28 @@ const router = createRouter({
               name: 'userDetailsView',
               component: () => import('../views/Admin/UserInfoView.vue'),
               meta: { requiresAuth: true },
-              props: route => ({ document: route.params.document})
+              props: route => ({ document: route.params.document })
 
             },
             {
-              path:'requestDetails/user/:document/request/:idRequest',
+              path: 'requestDetails/user/:document/request/:idRequest',
               name: 'requestDetailsView',
               component: () => import('../views/Admin/RequestDetailsView.vue'),
               meta: { requiresAuth: true },
-              props: route => ({ document: route.params.document, idRequest:  parseInt(route.params.idRequest)})
+              props: route => ({ document: route.params.document, idRequest: parseInt(route.params.idRequest) })
             },
             {
               path: 'createTeams',
               name: 'createTeamsView',
               component: () => import('../views/Admin/CreateTeamsView.vue'),
-              meta: {requiresAuth: true}
+              meta: { requiresAuth: true }
+            },
+            {
+              path: 'inactiveUsers',
+              name: 'firedUsersView',
+              component: () => import('../views/Admin/InactiveUsers.vue'),
+              meta: { requiresAuth: true }
             }
-
           ]
         }
       ]
@@ -124,12 +124,12 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   const loginStore = useAuthStore()
 
-  if(to.meta.requiresAuth && !loginStore.isAuthenticated) return {name: 'LoginView'}
-  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_USER') router.push({name:'myRequests'})
-  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_RESPONSABLE') router.push({name:'requestListView'})
-  if(to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_ADMIN') {
+  if (to.meta.requiresAuth && !loginStore.isAuthenticated) return { name: 'LoginView' }
+  if (to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_USER') router.push({ name: 'myRequests' })
+  if (to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_RESPONSABLE') router.push({ name: 'requestListView' })
+  if (to.name == 'LayoutSession' && loginStore.roleLogin == 'ROLE_ADMIN') {
     console.log('admin');
-    router.push({name:'createUserView'})
+    router.push({ name: 'createUserView' })
   }
 })
 

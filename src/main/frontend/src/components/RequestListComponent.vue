@@ -1,20 +1,26 @@
 <script setup>
 import StateIndicator from './StateIndicator.vue';
+import { onBeforeMount } from 'vue';
+import { useResposableStore } from '../stores/responsableStore'
+
+const responsableStore = useResposableStore()
 
 const props = defineProps({
         request: {
             type: Object,
         },
     })
-
+onBeforeMount(() => {
+    responsableStore.findUserOfRequest(props.request.id)
+})
 
 
 const emits = defineEmits(['emitRequestDetails'])
 
 const emitRequestDetails = () => {
   emits('emitRequestDetails', {
-    userDocument: props.request.userDocument,
-    requestId: props.request.requestUser.id
+    userDocument: responsableStore.temporalUser.document,
+    requestId: props.request.id
   })
 }
 
@@ -23,9 +29,9 @@ const emitRequestDetails = () => {
 <template>
     <div class="request-wrapper"  @click="emitRequestDetails()">
                 <p class="workerName">{{ request.workerName }}</p>
-                <p class="date">{{ request.startDate }} - {{ request.finishDate }}</p>                 
-                <p class="days">Días de vacaciones: {{ request.days }} </p>
-                <StateIndicator :state="'aceptada'" />
+                <p class="date">{{ request.startDate }} - {{ request.endDate }}</p>                 
+                <p class="days">Días de vacaciones: {{ request.quantityOfDays }} </p>
+                <StateIndicator :state="request.state" />
     </div>
 </template>
 
